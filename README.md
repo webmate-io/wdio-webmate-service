@@ -1,6 +1,8 @@
 WebdriverIO webmate Service
 =========================
 
+This service provides convenient access to webmate for WebdriverIO based test setups.
+
 ## Installation
 
 To use the webmate wdio service add `wdio-webmate-service` as a devDependency to your `package.json`.
