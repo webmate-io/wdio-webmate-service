@@ -15,7 +15,7 @@ To use the webmate wdio service add `wdio-webmate-service` as a devDependency to
 
 ## Configuration
 
-When using webmate wdio service the remote will automatically be configured to `https://selenium.webmate.io/wd/hub`. This behaviour is overridden when a `hostname` is specified in the config beforehand. The service itself is configured as such: 
+When using webmate wdio service the remote will automatically be configured to `https://selenium.webmate.io/wd/hub`. This behaviour is disabled when `overrideSeleniumEndpoint` is set to false explicitly in the service options. The service itself is configured as such: 
 
 ```js
 // wdio.conf.js
