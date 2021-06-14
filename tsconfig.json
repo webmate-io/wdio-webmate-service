@@ -1,11 +1,23 @@
 {
-  "extends": "../../tsconfig",
   "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+
     "baseUrl": ".",
     "outDir": "./build",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "types": ["node", "@wdio/types"],
+
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true
+
   },
   "include": [
     "src/**/*"
-  ]
+  ],
 }

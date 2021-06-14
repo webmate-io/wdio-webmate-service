@@ -1,13 +1,13 @@
 {
   "name": "wdio-webmate-service",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "WebdriverIO service that provides integration with webmate",
   "author": "Alexander Schlosser <aschlosser@testfabrik.com>",
   "homepage": "https://github.com/webmate-io",
   "license": "Apache-2.0",
   "main": "./build",
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=14.0.0"
   },
   "repository": {
     "type": "git",
@@ -21,20 +21,26 @@
     "webmate"
   ],
   "scripts": {
-    "build": "babel src -d build"
+    "build": "tsc"
   },
   "dependencies": {
-    "@wdio/logger": "^5.0.0",
-    "@wdio/utils": "^5.0.0"
+    "@wdio/logger": "^7.7.0",
+    "@wdio/utils": "^7.7.0",
+    "@wdio/types": "7.7.0"
   },
   "peerDependencies": {
-    "@wdio/cli": "^5.0.0"
+    "@wdio/cli": "^7.7.0",
+    "webmate-sdk-js": "^0.29.3",
+    "request-promise-native": "^1.0.9"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
-  }
+    "@types/node": "^14.14.31",
+    "typescript": "^4.3.2",
+    "webmate-sdk-js": "^0.29.3",
+    "request-promise-native": "^1.0.9"
+  },
+  "types": "./build/index.d.ts"
 }
