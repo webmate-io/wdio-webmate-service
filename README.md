@@ -10,7 +10,7 @@ To use the webmate wdio service add `wdio-webmate-service` as a devDependency to
 ```json
 {
     "devDependencies": {
-        "wdio-webmate-service": "^1.0.0"
+        "wdio-webmate-service": "^1.0.1"
     }
 }
 ```
