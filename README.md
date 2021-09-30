@@ -10,7 +10,7 @@ To use the webmate wdio service add `wdio-webmate-service` as a devDependency to
 ```json
 {
     "devDependencies": {
-        "wdio-webmate-service": "^1.0.1"
+        "wdio-webmate-service": "^1.0.2"
     }
 }
 ```
@@ -34,7 +34,7 @@ exports.config = {
         ],
         capabilities: [{
             browserName: 'Chrome',
-            version: '86',
+            version: '93',
             platform: 'WINDOWS_10_64'
         }]
     }

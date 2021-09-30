@@ -32,13 +32,13 @@ export default class WebmateLauncher implements HookFunctions {
 
     fixCapabilities(capabilities: RemoteCapabilities | RemoteCapability) {
         // @ts-ignore
-        capabilities['email'] = this.options['email'];
+        capabilities['wm:email'] = this.options['email'];
         // @ts-ignore
-        capabilities['apikey'] = this.options['apikey'];
+        capabilities['wm:apikey'] = this.options['apikey'];
         // @ts-ignore
-        capabilities['project'] = this.options['project'];
+        capabilities['wm:project'] = this.options['project'];
         // @ts-ignore
-        capabilities['slot'] = this.options['slot'];
+        capabilities['wm:slot'] = this.options['slot'];
 
         if (this.options['overrideSeleniumEndpoint'] !== false) {
             // @ts-ignore

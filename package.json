@@ -1,6 +1,6 @@
 {
   "name": "wdio-webmate-service",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "WebdriverIO service that provides integration with webmate",
   "author": "Alexander Schlosser <aschlosser@testfabrik.com>",
   "homepage": "https://github.com/webmate-io",
