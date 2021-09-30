@@ -34,8 +34,8 @@ exports.config = {
         ],
         capabilities: [{
             browserName: 'Chrome',
-            version: '93',
-            platform: 'WINDOWS_10_64'
+            browserVersion: '93',
+            platformName: 'WINDOWS_10_64'
         }]
     }
 }
