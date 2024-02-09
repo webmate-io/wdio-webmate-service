@@ -1,5 +1,5 @@
-import WebmateLauncher from './launcher'
-import WebmateService from './service'
+import WebmateLauncher from './launcher.js'
+import WebmateService from './service.js'
 import {WebmateAPISession} from "webmate-sdk-js";
 
 export default WebmateService

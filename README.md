@@ -10,7 +10,7 @@ To use the webmate wdio service add `wdio-webmate-service` as a devDependency to
 ```json
 {
     "devDependencies": {
-        "wdio-webmate-service": "^1.0.2"
+        "wdio-webmate-service": "^8.0.0"
     }
 }
 ```
@@ -19,17 +19,17 @@ To use the webmate wdio service add `wdio-webmate-service` as a devDependency to
 
 When using webmate wdio service the remote will automatically be configured to `https://selenium.webmate.io/wd/hub`. This behaviour is disabled when `overrideSeleniumEndpoint` is set to false explicitly in the service options. The service itself is configured as such: 
 
-```js
-// wdio.conf.js
-exports.config = {
+```typescript
+// wdio.conf.ts
+export const config = {
     ...config,
     ...{
         services: [
             ['webmate', {
                 email: 'me@example.com',
-                apikey: 'f80bd163-04ac-42b3-8400-2a37d0d0b5e9',
+                apikey: 'THnMXW0GCKsw0qvOJdVhpG75jkjvjUIFqV84If9cSQQ=',
                 project: 'e579f289-7538-49f5-be5e-d1149cbda31a',
-                slot: '1964999b-19b4-4280-a1df-005ee047011e' //Optional
+                slot: '1964999b-19b4-4280-a1df-005ee047011e' // Optional
             }]
         ],
         capabilities: [{

@@ -1,15 +1,14 @@
 import logger from '@wdio/logger'
-import {HookFunctions, ServiceOption} from "@wdio/types/build/Services";
-import {RemoteCapability} from "@wdio/types/build/Capabilities";
+import {Capabilities, Services} from "@wdio/types";
 
 const log = logger('wdio-webmate-service')
 
-export default class WebmateService implements HookFunctions {
+export default class WebmateService implements Services.HookFunctions {
 
-    private options: ServiceOption;
+    private options: Services.ServiceOption;
     private apiEndpoint: string;
 
-    constructor (options: ServiceOption) {
+    constructor (options: Services.ServiceOption) {
         this.options = options || {}
         this.apiEndpoint = this.options['apiEndpoint'] || 'https://app.webmate.io/api/v1';
     }
@@ -17,7 +16,7 @@ export default class WebmateService implements HookFunctions {
     /**
      * this browser object is passed in here for the first time
      */
-    before(capabilities: RemoteCapability, specs: string[], browser: any) {
+    before(capabilities: Capabilities.RemoteCapability, specs: string[], browser: any) {
         //Inject webmate api session
         try {
             let webmateSession = require('webmate-sdk-js').startSession(this.options['email'], this.options['apikey'], this.apiEndpoint);
