@@ -1,22 +1,20 @@
 import logger from '@wdio/logger'
-import {HookFunctions, ServiceClass, ServiceOption} from "@wdio/types/build/Services";
-import {MultiRemoteCapabilities, RemoteCapabilities, RemoteCapability} from "@wdio/types/build/Capabilities";
-import {Testrunner as TestrunnerOptions, WebdriverIO as WebdriverIOOptions} from "@wdio/types/build/Options";
+import {Capabilities, Options, Services} from "@wdio/types";
 
 const log = logger('wdio-webmate-service')
 
-export default class WebmateLauncher implements HookFunctions {
-    private options: ServiceOption;
+export default class WebmateLauncher implements Services.HookFunctions {
+    private options: Services.ServiceOption;
     private seleniumEndpoint: URL;
     private apiEndpoint: URL;
 
-    constructor (options: ServiceOption, caps: RemoteCapability, config: Omit<WebdriverIOOptions, 'capabilities'>) {
+    constructor (options: Services.ServiceOption, caps: Capabilities.RemoteCapability, config: Omit<Options.WebdriverIO, 'capabilities'>) {
         this.options = options || {};
         this.seleniumEndpoint = new URL(this.options['seleniumEndpoint'] || 'https://selenium.webmate.io/wd/hub');
         this.apiEndpoint = new URL(this.options['apiEndpoint'] || 'https://app.webmate.io/api/v1');
     }
 
-    fixConfig(config: Omit<WebdriverIOOptions, 'capabilities'>) {
+    fixConfig(config: Omit<Options.WebdriverIO, 'capabilities'>) {
         if (this.options['overrideSeleniumEndpoint'] !== false) {
             config.hostname = this.seleniumEndpoint.hostname;
             const useHttps = this.seleniumEndpoint.protocol && this.seleniumEndpoint.protocol.startsWith('https');
@@ -30,7 +28,7 @@ export default class WebmateLauncher implements HookFunctions {
         }
     }
 
-    fixCapabilities(capabilities: RemoteCapabilities | RemoteCapability) {
+    fixCapabilities(capabilities: Capabilities.RemoteCapabilities | Capabilities.RemoteCapability) {
         // @ts-ignore
         capabilities['wm:email'] = this.options['email'];
         // @ts-ignore
@@ -58,15 +56,15 @@ export default class WebmateLauncher implements HookFunctions {
         }
     }
 
-    async onPrepare (config: TestrunnerOptions, capabilities: RemoteCapabilities) {
+    async onPrepare (config: Options.Testrunner, capabilities: Capabilities.RemoteCapabilities) {
         this.fixConfig(config);
         const isMultiremote = !Array.isArray(capabilities)
         if (isMultiremote) {
             for (const browserName of Object.keys(capabilities)) {
-                this.fixCapabilities((capabilities as MultiRemoteCapabilities)[browserName].capabilities);
+                this.fixCapabilities((capabilities as Capabilities.MultiRemoteCapabilities)[browserName].capabilities);
             }
         } else {
-            (capabilities as Array<RemoteCapabilities>).forEach(capabilities => this.fixCapabilities(capabilities))
+            (capabilities as Array<Capabilities.RemoteCapabilities>).forEach(capabilities => this.fixCapabilities(capabilities))
         }
     }
 
